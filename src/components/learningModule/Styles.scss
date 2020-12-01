@@ -5,6 +5,11 @@
 .learningModule {
     &__header {
         text-align: center;
+        @media only screen and (max-width: $mobile){
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     }
 
     &__title {
@@ -17,6 +22,10 @@
     &__subHeader{
         @include subheader;
         min-height: 42px;
+        @media only screen and (max-width: $mobile){
+            // getting rid of the subheader once it hits mobile query
+            display: none;
+        }
     }
   
     &__answerArea {
@@ -27,9 +36,11 @@
         display: grid;
         justify-content: center;
         @media only screen and (max-width: $tablet) {
-            border-radius: unset;
         }
-
+        //media query for mobile
+        @media only screen and(max-width: $mobile){
+           
+        }
     }
 
     &__selections{ 
@@ -37,12 +48,23 @@
         display: grid;
         grid-auto-flow: column;
         grid-gap: 10px;
+        @media only screen and (max-width: $tablet){
+            // once media query hits put answers in a grid where elements sit next to eachother
+            grid-auto-flow: row;
+            grid-template-columns: 50% 50%;
+            align-items: center;
+        }
     }
 
     &__submitButtonContainer {
         height: 50px;
         .submitButton {
             float: right;
+            //media query for mobile device
+            @media only screen and(max-width: $mobile){
+                //button to take full width 
+            width: 80%;
+            }
         }
     }
 }
